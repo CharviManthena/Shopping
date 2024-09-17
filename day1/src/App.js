@@ -4,9 +4,6 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import PgFOF from './components/PgFOF';
-import Navbar from './components/Navbar';
-import cart from './components/cart';
-import profile from './components/profile';
 function App() {
   return (
     <BrowserRouter>
