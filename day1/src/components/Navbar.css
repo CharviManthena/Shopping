@@ -1,0 +1,68 @@
+/* Styling the navbar container */
+nav {
+    background-color: #f8f9fa; /* Light background color */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center;
+    border-bottom: 1px solid #ddd; /* Optional border */
+}
+
+/* Container for right-aligned items */
+.nav-items {
+    display: flex;
+    align-items: center;
+}
+
+/* Styling the links */
+.nav-link {
+    text-decoration: none; /* Remove underline from links */
+    margin-left: 10px; /* Space between links */
+}
+
+/* Styling the buttons */
+.nav-button {
+    background-color: #007bff; /* Button background color (blue) */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Padding for the buttons */
+    font-size: 16px; /* Font size for the button text */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+    font-family: 'Arial', sans-serif; /* Optional font family */
+}
+
+/* Hover effect for the buttons */
+.nav-button:hover {
+    background-color: #0056b3; /* Darker blue when hovering */
+}
+
+/* Active state for the buttons */
+.nav-button:active {
+    background-color: #004085; /* Even darker blue when the button is clicked */
+}
+
+/* Styling the cart logo container */
+.cart-logo {
+    display: flex;
+    align-items: center;
+    margin-left: 10px; /* Space between cart and other items */
+}
+
+.cart-logo img {
+    width: 35px; /* Adjust size of the cart icon */
+    height: 35px;
+}
+
+.cart-icon-css {
+    font-size: 10px; /* Font size for cart item count */
+    margin-left: 5px; /* Space between icon and item count */
+}
+
+/* Styling the profile icon */
+.profile-icon {
+    width: 35px; /* Adjust size of the profile icon */
+    height: 35px;
+    margin-left: 10px; /* Space between profile icon and other items */
+}
