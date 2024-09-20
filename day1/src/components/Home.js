@@ -1,46 +1,50 @@
-import React, { useState, useEffect } from 'react';
-import Navbar from './Navbar';
-import Products from './Products';
-import Banner from './Banner';
-import { auth, db } from '../Firebaseconfigs/Firebaseconfigs';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import React, { useState, useEffect } from 'react'
+import Navbar from './Navbar'
+import Banner from './Banner'
+import { auth, db } from '../FirebaseConfigs/firebaseConfig'
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import ProductSlider from './Some-Product-Components/ProductSlider'
 
-const Home = () =>  {
+import './Home.css'
+
+const Home = () => {
+
     function GetCurrentUser() {
-        const [user, setUser] = useState(null);
-        const usersCollectionRef = collection(db, "users"); // Assuming the correct collection is "users"
-
+        const [user, setUser] = useState("");
+        const usersCollectionRef = collection(db, "users");
         useEffect(() => {
-            const unsubscribe = auth.onAuthStateChanged(userlogged => {
+            auth.onAuthStateChanged(userlogged => {
                 if (userlogged) {
                     const getUsers = async () => {
-                        const q = query(usersCollectionRef, where("uid", "==", userlogged.uid)); // Correct operator
+                        const q = query(collection(db, "users"), where("uid", "==", userlogged.uid));
                         const data = await getDocs(q);
                         setUser(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
                     };
                     getUsers();
-                } else {
+                }
+                else {
                     setUser(null);
                 }
-            });
-
-            return () => unsubscribe(); // Clean up on component unmount
-        }, []);
-
-        return user;
+            })
+        }, [])
+        return user
     }
-
     const loggeduser = GetCurrentUser();
+    // if (loggeduser) { console.log(loggeduser[0]) }
 
     return (
         <div>
-            <Navbar />
-            <Products />
-            <Banner />
-            {/* Check if loggeduser exists and has data */}
-            <p>{loggeduser && loggeduser.length > 0 ? loggeduser[0].email : "No data"}</p>
+            <Navbar ></Navbar>
+            <Banner></Banner>
+            <div className="slider-head"><p>Limited Time Deals</p></div>
+            <ProductSlider type={'Mobile'} />
+            <ProductSlider type={'Camera'} />
+            <ProductSlider type={'Laptop'} />
+            <ProductSlider type={'Shoes'} />
+            {/* <Products /> */}
+            {/* <p>{loggeduser ? loggeduser[0].email : "No data"}</p> */}
         </div>
-    );
+    )
 }
 
-export default Home;
+export default Home
